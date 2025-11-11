@@ -1,5 +1,6 @@
 public class WordModel
 {
+    public string OriginalWord = "";
     public string WordToGuess = "";
     public string CurrentInput = "";
     public int MaxAttempts = 6;

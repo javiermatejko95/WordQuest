@@ -7,16 +7,25 @@ public class WordsGameController : MonoBehaviour
     private WordModel model;
     private WordValidatorService validator;
     private WordEvaluationService evaluator;
+    private DailyWordService dailyWord;
+    private WordDictionary wordDictionary;
 
     private void Awake()
     {
         model = new();
-        validator = new ();
         evaluator = new ();
+        wordDictionary = new();
+        validator = new (wordDictionary);
+        dailyWord = new(wordDictionary);
 
         GameEvents.OnLetterEntered += HandleOnLetterEnter;
         GameEvents.OnDeleteLetter += HandleOnDeleteLetter;
         GameEvents.OnSubmitWord += HandleOnSubmitWord;
+
+        model.OriginalWord = dailyWord.GetWordOfTheDay();
+        model.WordToGuess = StringUtils.RemoveDiacritics(model.OriginalWord);
+
+        Debug.Log("La palabra del dia es: " + model.OriginalWord);
     }
 
     private void HandleOnLetterEnter(string letter)
@@ -33,8 +42,15 @@ public class WordsGameController : MonoBehaviour
 
     private void HandleOnSubmitWord()
     {
-        if (model.GameFinished || model.CurrentInput.Length < 5) return;
-        if (!validator.IsValidWord(model.CurrentInput)) return;
+        if (model.GameFinished || model.CurrentInput.Length < 5)
+        {
+            return;
+        }
+
+        if (!validator.IsValidWord(model.CurrentInput))
+        {
+            return;
+        }
 
         LetterResult[] result = evaluator.Evaluate(model.CurrentInput, model.WordToGuess);
         GameEvents.OnWordEvaluated?.Invoke(model.CurrentAttempt, result);

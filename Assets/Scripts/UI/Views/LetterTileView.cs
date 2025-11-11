@@ -9,18 +9,27 @@ public class LetterTileView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI label;
     [SerializeField] private Image background;
 
+    public void Init(LetterTileThemeConfig letterTileThemeConfig)
+    {
+        background.color = letterTileThemeConfig.DefaultBackgroundColor;
+        label.text = "";
+        label.color = letterTileThemeConfig.DefaultLetterColor;
+    }
+
     public void SetLetter(string letter)
     {
         label.text = letter;
     }
 
-    public void SetState(LetterState state)
+    public void SetState(LetterState state, LetterTileThemeConfig letterTileThemeConfig)
     {
         background.color = state switch
         {
-            LetterState.Correct => Color.green,
-            LetterState.Present => Color.yellow,
-            _ => Color.gray
+            LetterState.Correct => letterTileThemeConfig.CorrectBackgroundColor,
+            LetterState.Present => letterTileThemeConfig.PresentBackgroundColor,
+            _ => letterTileThemeConfig.AbsentBackgroundColor
         };
+
+        label.color = letterTileThemeConfig.SelectedLetterColor;
     }
 }

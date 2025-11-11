@@ -3,6 +3,7 @@ using UnityEngine;
 public class BoardView : MonoBehaviour
 {
     [SerializeField] private GameDataConfig gameDataConfig;
+    [SerializeField] private LetterTileThemeConfig letterTileThemeConfig;
 
     [SerializeField] private GameObject rowViewPrefab;
     [SerializeField] private LetterTileView letterTileViewPrefab;
@@ -39,13 +40,14 @@ public class BoardView : MonoBehaviour
             {
                 LetterTileView letterTileView = Instantiate(letterTileViewPrefab, go.transform);
                 board[i, j] = letterTileView;
+                letterTileView.Init(letterTileThemeConfig);
             }
         }
     }
 
     private void AddLetter(string letter)
     {
-        if (currentCol > 4) return;
+        if (currentCol >= gameDataConfig.Columns) return;
         board[currentRow, currentCol].SetLetter(letter);
         currentCol++;
     }
@@ -62,7 +64,7 @@ public class BoardView : MonoBehaviour
         for (int i = 0; i < letters.Length; i++)
         {
             board[row, i].SetLetter(letters[i].Letter.ToString());
-            board[row, i].SetState(letters[i].State);
+            board[row, i].SetState(letters[i].State, letterTileThemeConfig);
         }
 
         currentRow++;

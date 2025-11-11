@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23be802e023764468573e38908008ef, type: 3}
+  m_Name: TileThemeConfig
+  m_EditorClassIdentifier: 
+  defaultBackgroundColor: {r: 0.9843138, g: 0.98823535, b: 1, a: 1}
+  absentBackgroundColor: {r: 0.6431373, g: 0.68235296, b: 0.7686275, a: 1}
+  presentBackgroundColor: {r: 0.95294124, g: 0.7607844, b: 0.21568629, a: 1}
+  correctBackgroundColor: {r: 0.47450984, g: 0.72156864, b: 0.31764707, a: 1}
+  defaultKeyboardColor: {r: 0.86274517, g: 0.882353, b: 0.9294118, a: 1}
+  defaultLetterColor: {r: 0.25490198, g: 0.2901961, b: 0.36862746, a: 1}
+  selectedLetterColor: {r: 1, g: 1, b: 1, a: 1}

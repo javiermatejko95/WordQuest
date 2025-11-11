@@ -1,11 +1,17 @@
-using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
 
 public class WordValidatorService
 {
-    private HashSet<string> validWords = new() { "UNITY", "APPLE", "WORLD", "PLANE", "HOUSE" };
+    private WordDictionary dictionary;
+
+    public WordValidatorService(WordDictionary wordDictionary)
+    {
+        dictionary = wordDictionary;
+    }
 
     public bool IsValidWord(string word)
     {
-        return validWords.Contains(word.ToUpper());
-    }
+        return dictionary.IsValid(word.ToUpper());
+    }    
 }

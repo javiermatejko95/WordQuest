@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class DailyWordService
 {
@@ -14,6 +14,12 @@ public class DailyWordService
     public string GetWordOfTheDay()
     {
         int index = DateTime.Now.DayOfYear % dictionary.Words.Count;
+        return dictionary.Words.ElementAt(index);
+    }
+
+    public string GetNewRandomWord()
+    {
+        int index = UnityEngine.Random.Range(0, dictionary.Words.Count);
         return dictionary.Words.ElementAt(index);
     }
 }

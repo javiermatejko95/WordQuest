@@ -24,10 +24,7 @@ public class WordsGameController : MonoBehaviour
         GameEvents.OnGameRestart += HandleOnGameRestart;
         GameEvents.OnGameFinished += HandleOnGameFinished;
 
-        model.OriginalWord = dailyWord.GetWordOfTheDay();
-        model.WordToGuess = StringUtils.RemoveDiacritics(model.OriginalWord);
-
-        Debug.Log("La palabra del dia es: " + model.OriginalWord);
+        HandleOnGameRestart();
     }
 
     private void OnDestroy()
@@ -83,6 +80,11 @@ public class WordsGameController : MonoBehaviour
     {
         model.GameFinished = false;
         model.CurrentAttempt = 0;
+
+        model.OriginalWord = dailyWord.GetNewRandomWord();
+        model.WordToGuess = StringUtils.RemoveDiacritics(model.OriginalWord);
+
+        Debug.Log("La palabra del dia es: " + model.OriginalWord);
     }
 
     private void HandleOnGameFinished(bool hasWon)

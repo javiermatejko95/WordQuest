@@ -21,6 +21,7 @@ public class WordsGameController : MonoBehaviour
         GameEvents.OnLetterEntered += HandleOnLetterEnter;
         GameEvents.OnDeleteLetter += HandleOnDeleteLetter;
         GameEvents.OnSubmitWord += HandleOnSubmitWord;
+        GameEvents.OnGameRestart += HandleOnGameRestart;
 
         model.OriginalWord = dailyWord.GetWordOfTheDay();
         model.WordToGuess = StringUtils.RemoveDiacritics(model.OriginalWord);
@@ -28,10 +29,20 @@ public class WordsGameController : MonoBehaviour
         Debug.Log("La palabra del dia es: " + model.OriginalWord);
     }
 
+    private void OnDestroy()
+    {
+        GameEvents.OnLetterEntered -= HandleOnLetterEnter;
+        GameEvents.OnDeleteLetter -= HandleOnDeleteLetter;
+        GameEvents.OnSubmitWord -= HandleOnSubmitWord;
+        GameEvents.OnGameRestart -= HandleOnGameRestart;
+    }
+
     private void HandleOnLetterEnter(string letter)
     {
         if (model.CurrentInput.Length >= 5 || model.GameFinished) return;
         model.CurrentInput += letter.ToUpper();
+
+        GameEvents.OnLetterAdded?.Invoke(letter.ToUpper());
     }
 
     private void HandleOnDeleteLetter()
@@ -64,5 +75,11 @@ public class WordsGameController : MonoBehaviour
             model.GameFinished = true;
             GameEvents.OnGameFinished?.Invoke(won);
         }
+    }
+
+    private void HandleOnGameRestart()
+    {
+        model.GameFinished = false;
+        model.CurrentAttempt = 0;
     }
 }

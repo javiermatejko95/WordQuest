@@ -14,7 +14,7 @@ public class BoardView : MonoBehaviour
 
     private void Awake()
     {
-        GameEvents.OnLetterEntered += AddLetter;
+        GameEvents.OnLetterAdded += AddLetter;
         GameEvents.OnDeleteLetter += RemoveLetter;
         GameEvents.OnWordEvaluated += LockRow;
         GameEvents.OnGameRestart += HandleOnGameRestart;
@@ -26,7 +26,7 @@ public class BoardView : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameEvents.OnLetterEntered -= AddLetter;
+        GameEvents.OnLetterAdded -= AddLetter;
         GameEvents.OnDeleteLetter -= RemoveLetter;
         GameEvents.OnWordEvaluated -= LockRow;
         GameEvents.OnGameRestart -= HandleOnGameRestart;

@@ -18,6 +18,7 @@ public class BoardView : MonoBehaviour
         GameEvents.OnDeleteLetter += RemoveLetter;
         GameEvents.OnWordEvaluated += LockRow;
         GameEvents.OnGameRestart += HandleOnGameRestart;
+        GameEvents.OnWordReveal += HandleOnWordReveal;
 
         board = new LetterTileView[gameDataConfig.Rows, gameDataConfig.Columns];
 
@@ -30,6 +31,7 @@ public class BoardView : MonoBehaviour
         GameEvents.OnDeleteLetter -= RemoveLetter;
         GameEvents.OnWordEvaluated -= LockRow;
         GameEvents.OnGameRestart -= HandleOnGameRestart;
+        GameEvents.OnWordReveal -= HandleOnWordReveal;
     }
 
     private void SpawnLetterTiles()
@@ -84,6 +86,14 @@ public class BoardView : MonoBehaviour
             {
                 board[i,j].Init(letterTileThemeConfig);
             }
+        }
+    }
+
+    private void HandleOnWordReveal(string word)
+    {
+        for(int i = 0; i < gameDataConfig.Columns; i++)
+        {
+            board[currentRow - 1, i].SetLetter(word[i].ToString());
         }
     }
 }

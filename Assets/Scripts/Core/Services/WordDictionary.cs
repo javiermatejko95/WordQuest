@@ -17,7 +17,7 @@ public class WordDictionary
 
     public void Load()
     {
-        TextAsset file = Resources.Load<TextAsset>("words5_clean");
+        TextAsset file = Resources.Load<TextAsset>("es_clean");
         Words = new HashSet<string>(file.text
             .Split('\n')
             .Select(word => word.Trim()));
@@ -33,6 +33,6 @@ public class WordDictionary
 
     public bool IsValid(string word)
     {
-        return WordsClean.Contains(word.ToUpper());
+        return WordsClean.Contains(word.ToUpper()) || Words.Contains(word.ToUpper());
     }
 }

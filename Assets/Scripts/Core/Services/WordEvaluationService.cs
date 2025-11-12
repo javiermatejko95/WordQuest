@@ -1,15 +1,14 @@
 public class WordEvaluationService
 {
-    public LetterResult[] Evaluate(string guess, string target)
+    public LetterResult[] Evaluate(string guess, string target, string target2)
     {
         int length = target.Length;
         LetterResult[] result = new LetterResult[target.Length];
-        char[] targetArray = target.ToCharArray();
         bool[] used = new bool[length];
 
         for (int i = 0; i < length; i++)
         {
-            if (guess[i] == target[i])
+            if (guess[i] == target[i] || guess[i] == target2[i])
             {
                 result[i] = new LetterResult { Letter = guess[i], State = LetterState.Correct };
                 used[i] = true;
@@ -23,7 +22,7 @@ public class WordEvaluationService
             bool found = false;
             for (int j = 0; j < length; j++)
             {
-                if (!used[j] && guess[i] == target[j])
+                if (!used[j] && guess[i] == target[j] || guess[i] == target2[j])
                 {
                     found = true;
                     used[j] = true;

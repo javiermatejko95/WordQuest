@@ -22,6 +22,7 @@ public class WordsGameController : MonoBehaviour
         GameEvents.OnDeleteLetter += HandleOnDeleteLetter;
         GameEvents.OnSubmitWord += HandleOnSubmitWord;
         GameEvents.OnGameRestart += HandleOnGameRestart;
+        GameEvents.OnGameFinished += HandleOnGameFinished;
 
         model.OriginalWord = dailyWord.GetWordOfTheDay();
         model.WordToGuess = StringUtils.RemoveDiacritics(model.OriginalWord);
@@ -35,6 +36,7 @@ public class WordsGameController : MonoBehaviour
         GameEvents.OnDeleteLetter -= HandleOnDeleteLetter;
         GameEvents.OnSubmitWord -= HandleOnSubmitWord;
         GameEvents.OnGameRestart -= HandleOnGameRestart;
+        GameEvents.OnGameFinished -= HandleOnGameFinished;
     }
 
     private void HandleOnLetterEnter(string letter)
@@ -63,7 +65,7 @@ public class WordsGameController : MonoBehaviour
             return;
         }
 
-        LetterResult[] result = evaluator.Evaluate(model.CurrentInput, model.WordToGuess);
+        LetterResult[] result = evaluator.Evaluate(model.CurrentInput, model.WordToGuess, model.OriginalWord);
         GameEvents.OnWordEvaluated?.Invoke(model.CurrentAttempt, result);
 
         bool won = model.CurrentInput == model.WordToGuess;
@@ -81,5 +83,13 @@ public class WordsGameController : MonoBehaviour
     {
         model.GameFinished = false;
         model.CurrentAttempt = 0;
+    }
+
+    private void HandleOnGameFinished(bool hasWon)
+    {
+        if(hasWon)
+        {
+            GameEvents.OnWordReveal?.Invoke(model.OriginalWord);
+        }        
     }
 }

@@ -17,6 +17,7 @@ public class BoardView : MonoBehaviour
         GameEvents.OnLetterEntered += AddLetter;
         GameEvents.OnDeleteLetter += RemoveLetter;
         GameEvents.OnWordEvaluated += LockRow;
+        GameEvents.OnGameRestart += HandleOnGameRestart;
 
         board = new LetterTileView[gameDataConfig.Rows, gameDataConfig.Columns];
 
@@ -28,6 +29,7 @@ public class BoardView : MonoBehaviour
         GameEvents.OnLetterEntered -= AddLetter;
         GameEvents.OnDeleteLetter -= RemoveLetter;
         GameEvents.OnWordEvaluated -= LockRow;
+        GameEvents.OnGameRestart -= HandleOnGameRestart;
     }
 
     private void SpawnLetterTiles()
@@ -69,5 +71,19 @@ public class BoardView : MonoBehaviour
 
         currentRow++;
         currentCol = 0;
+    }
+
+    private void HandleOnGameRestart()
+    {
+        currentRow = 0;
+        currentCol = 0;
+
+        for(int i = 0; i < gameDataConfig.Rows; i++)
+        {
+            for(int j = 0; j < gameDataConfig.Columns; j++)
+            {
+                board[i,j].Init(letterTileThemeConfig);
+            }
+        }
     }
 }

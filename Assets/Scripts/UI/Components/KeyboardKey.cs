@@ -2,21 +2,25 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KeyboardKey : Button
+public class KeyboardKey : MonoBehaviour
 {
     [SerializeField] private string letter;
     [SerializeField] private TextMeshProUGUI letterText;
+    
+    private Button button;
 
-    protected override void Awake()
+    protected void Awake()
     {
         Init();
     }
 
     private void Init()
     {
+        button = GetComponent<Button>();
+
         letterText.text = letter;
 
-        onClick.AddListener(Press);
+        button.onClick.AddListener(Press);
     }
 
     public void Press()

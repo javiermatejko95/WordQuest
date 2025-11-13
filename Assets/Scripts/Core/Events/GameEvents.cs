@@ -2,6 +2,8 @@ using System;
 
 public static class GameEvents
 {
+    public static Action<string> OnLoadGame; 
+
     public static Action<string> OnLetterEntered;
     public static Action<string> OnLetterAdded;
     public static Action OnDeleteLetter;

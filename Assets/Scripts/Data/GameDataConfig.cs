@@ -5,13 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameData", menuName = "Data")]
 public class GameDataConfig : ScriptableObject
 {
-    [SerializeField] private int rows;
-    [SerializeField] private int columns;
+    [SerializeField] private int maxRows;
+    [SerializeField] private int maxColumns;
 
     [SerializeField] private int maxAttempts;
 
-    public int Rows { get => rows; }
-    public int Columns { get => columns; }
+    public int MaxRows { get => maxRows; }
+    public int MaxColumns { get => maxColumns; }
 
     public int MaxAttempts { get => maxAttempts; }
 }

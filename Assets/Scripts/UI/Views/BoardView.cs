@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BoardView : MonoBehaviour
@@ -12,6 +13,8 @@ public class BoardView : MonoBehaviour
     private int currentRow = 0;
     private int currentCol = 0;
 
+    private int currentMaxColumns = 0;
+
     private void Awake()
     {
         GameEvents.OnLetterAdded += AddLetter;
@@ -19,8 +22,9 @@ public class BoardView : MonoBehaviour
         GameEvents.OnWordEvaluated += LockRow;
         GameEvents.OnGameRestart += HandleOnGameRestart;
         GameEvents.OnWordReveal += HandleOnWordReveal;
+        GameEvents.OnLoadGame += ShowLetterTiles;
 
-        board = new LetterTileView[gameDataConfig.Rows, gameDataConfig.Columns];
+        board = new LetterTileView[gameDataConfig.MaxRows, gameDataConfig.MaxColumns];
 
         SpawnLetterTiles();
     }
@@ -32,26 +36,43 @@ public class BoardView : MonoBehaviour
         GameEvents.OnWordEvaluated -= LockRow;
         GameEvents.OnGameRestart -= HandleOnGameRestart;
         GameEvents.OnWordReveal -= HandleOnWordReveal;
+        GameEvents.OnLoadGame -= ShowLetterTiles;
     }
 
     private void SpawnLetterTiles()
     {
-        for(int i = 0; i < gameDataConfig.Rows; i++) 
+        for (int i = 0; i < gameDataConfig.MaxRows; i++)
         {
             GameObject go = Instantiate(rowViewPrefab, transform);
 
-            for(int j = 0; j < gameDataConfig.Columns; j++)
+            for (int j = 0; j < gameDataConfig.MaxColumns; j++)
             {
                 LetterTileView letterTileView = Instantiate(letterTileViewPrefab, go.transform);
                 board[i, j] = letterTileView;
                 letterTileView.Init(letterTileThemeConfig);
+                letterTileView.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void ShowLetterTiles(string columns)
+    {
+        HandleOnGameRestart();
+
+        currentMaxColumns = int.Parse(columns);
+
+        for(int i = 0; i < gameDataConfig.MaxRows; i++) 
+        {
+            for(int j = 0; j < gameDataConfig.MaxColumns; j++)
+            {
+                board[i, j].gameObject.SetActive(j < currentMaxColumns ? true : false);
             }
         }
     }
 
     private void AddLetter(string letter)
     {
-        if (currentCol >= gameDataConfig.Columns) return;
+        if (currentCol >= currentMaxColumns) return;
         board[currentRow, currentCol].SetLetter(letter);
         currentCol++;
     }
@@ -80,9 +101,9 @@ public class BoardView : MonoBehaviour
         currentRow = 0;
         currentCol = 0;
 
-        for(int i = 0; i < gameDataConfig.Rows; i++)
+        for(int i = 0; i < gameDataConfig.MaxRows; i++)
         {
-            for(int j = 0; j < gameDataConfig.Columns; j++)
+            for(int j = 0; j < gameDataConfig.MaxColumns; j++)
             {
                 board[i,j].Init(letterTileThemeConfig);
             }
@@ -91,7 +112,7 @@ public class BoardView : MonoBehaviour
 
     private void HandleOnWordReveal(string word)
     {
-        for(int i = 0; i < gameDataConfig.Columns; i++)
+        for(int i = 0; i < currentMaxColumns; i++)
         {
             board[currentRow - 1, i].SetLetter(word[i].ToString());
         }

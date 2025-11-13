@@ -10,6 +10,8 @@ public class WordsGameController : MonoBehaviour
     private DailyWordService dailyWord;
     private WordDictionary wordDictionary;
 
+    private int currentMaxColumns = 0;
+
     private void Awake()
     {
         model = new();
@@ -23,8 +25,7 @@ public class WordsGameController : MonoBehaviour
         GameEvents.OnSubmitWord += HandleOnSubmitWord;
         GameEvents.OnGameRestart += HandleOnGameRestart;
         GameEvents.OnGameFinished += HandleOnGameFinished;
-
-        HandleOnGameRestart();
+        GameEvents.OnLoadGame += HandleOnLoadWithNumber;
     }
 
     private void OnDestroy()
@@ -34,11 +35,12 @@ public class WordsGameController : MonoBehaviour
         GameEvents.OnSubmitWord -= HandleOnSubmitWord;
         GameEvents.OnGameRestart -= HandleOnGameRestart;
         GameEvents.OnGameFinished -= HandleOnGameFinished;
+        GameEvents.OnLoadGame -= HandleOnLoadWithNumber;
     }
 
     private void HandleOnLetterEnter(string letter)
     {
-        if (model.CurrentInput.Length >= 5 || model.GameFinished) return;
+        if (model.CurrentInput.Length >= currentMaxColumns || model.GameFinished) return;
         model.CurrentInput += letter.ToUpper();
 
         GameEvents.OnLetterAdded?.Invoke(letter.ToUpper());
@@ -93,5 +95,14 @@ public class WordsGameController : MonoBehaviour
         {
             GameEvents.OnWordReveal?.Invoke(model.OriginalWord);
         }        
+    }
+
+    private void HandleOnLoadWithNumber(string number)
+    {
+        currentMaxColumns = int.Parse(number);
+
+        wordDictionary.LoadWithNumber(number);
+
+        HandleOnGameRestart();
     }
 }

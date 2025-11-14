@@ -10,11 +10,6 @@ public class WordDictionary
     public HashSet<string> Words { get; private set; }
     public HashSet<string> WordsClean { get; private set; }
 
-    //public WordDictionary()
-    //{
-    //    Load();
-    //}
-
     public void Load()
     {
         TextAsset file = Resources.Load<TextAsset>("es_clean");

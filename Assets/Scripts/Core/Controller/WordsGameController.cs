@@ -103,6 +103,6 @@ public class WordsGameController : MonoBehaviour
 
         wordDictionary.LoadWithNumber(number);
 
-        HandleOnGameRestart();
+        GameEvents.OnGameRestart?.Invoke();
     }
 }

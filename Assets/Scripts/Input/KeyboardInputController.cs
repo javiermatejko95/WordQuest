@@ -1,10 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class KeyboardInputController : MonoBehaviour
 {
+    [SerializeField] private LocalizationData localizationData;
+
+    private void Awake()
+    {
+        LocalizationEvents.OnLanguageLoad += HandleOnLanguageLoad;
+    }
+
     private void Update()
     {
         foreach (char c in Input.inputString)
@@ -18,5 +23,16 @@ public class KeyboardInputController : MonoBehaviour
             else if (c == '\n' || c == '\r')
                 GameEvents.OnSubmitWord?.Invoke();
         }
+    }
+
+    private void OnDestroy()
+    {
+        LocalizationEvents.OnLanguageLoad -= HandleOnLanguageLoad;
+    }
+
+    private void HandleOnLanguageLoad(string code)
+    {
+        bool active = localizationData.LanguageRules.Contains(code);
+        KeyboardEvents.OnEnyeKeyEnabled?.Invoke(active);
     }
 }

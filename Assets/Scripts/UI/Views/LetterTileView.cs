@@ -11,7 +11,7 @@ public class LetterTileView : MonoBehaviour
 
     public void Init(LetterTileThemeConfig letterTileThemeConfig)
     {
-        background.color = letterTileThemeConfig.DefaultBackgroundColor;
+        background.color = letterTileThemeConfig.DefaultLetterTileViewBackgroundColor;
         label.text = "";
         label.color = letterTileThemeConfig.DefaultLetterColor;
     }

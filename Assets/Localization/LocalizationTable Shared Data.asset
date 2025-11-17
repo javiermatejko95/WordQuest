@@ -16,7 +16,11 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: ab7c6f94ab2f6eb4fa47240b360e9181
   m_Entries:
   - m_Id: 159996407808
-    m_Key: test
+    m_Key: testStatic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7891264696320
+    m_Key: testDynamic
     m_Metadata:
       m_Items: []
   m_Metadata:

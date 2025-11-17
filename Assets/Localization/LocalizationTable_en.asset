@@ -19,7 +19,11 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 159996407808
-    m_Localized: Test
+    m_Localized: Test Static
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7891264696320
+    m_Localized: Test Dynamic
     m_Metadata:
       m_Items: []
   references:

@@ -41,6 +41,7 @@ public class ConfettiSpawner : MonoBehaviour
 
     private void Play()
     {
+        //TODO: add object pool
         for (int i = 0; i < confettiData.Amount; i++)
         {
             SpawnPiece(true);

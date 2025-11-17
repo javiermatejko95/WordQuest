@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   letter: 
   letterText: {fileID: 5246426817317017283}
+  backgroundImage: {fileID: 1157821376162421180}
 --- !u!114 &1512113639164502233
 MonoBehaviour:
   m_ObjectHideFlags: 0

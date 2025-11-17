@@ -6,7 +6,8 @@ using UnityEngine;
 public class LetterTileThemeConfig : ScriptableObject
 {
     [Header("Background Config")]
-    [SerializeField] private Color defaultBackgroundColor;
+    [SerializeField] private Color defaultLetterTileViewBackgroundColor;
+    [SerializeField] private Color defaultKeyabordKeyBackgroundColor;
     [SerializeField] private Color absentBackgroundColor;
     [SerializeField] private Color presentBackgroundColor;
     [SerializeField] private Color correctBackgroundColor;
@@ -18,7 +19,8 @@ public class LetterTileThemeConfig : ScriptableObject
     [SerializeField] private Color defaultLetterColor;
     [SerializeField] private Color selectedLetterColor;
 
-    public Color DefaultBackgroundColor { get => defaultBackgroundColor; }
+    public Color DefaultLetterTileViewBackgroundColor { get => defaultLetterTileViewBackgroundColor; }
+    public Color DefaultKeyabordKeyBackgroundColor { get => defaultKeyabordKeyBackgroundColor; }
     public Color AbsentBackgroundColor { get => absentBackgroundColor; }
     public Color PresentBackgroundColor { get => presentBackgroundColor; }
     public Color CorrectBackgroundColor { get => correctBackgroundColor; }

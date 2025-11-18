@@ -25,7 +25,7 @@ public class ConfettiSpawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
-            Play();
+            //Play();
         }
     }
 

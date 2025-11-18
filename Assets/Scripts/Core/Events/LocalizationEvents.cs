@@ -6,5 +6,5 @@ using UnityEngine;
 public static class LocalizationEvents
 {
     public static Action<string> OnLanguageLoad;
-    public static Action OnLanguageChanged;
+    public static Action<string> OnLanguageChanged;
 }

@@ -4,11 +4,10 @@ using UnityEngine;
 using TMPro;
 using Cysharp.Threading.Tasks;
 using UnityEngine.Localization;
+using System;
 
 public class LocalizationController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI prueba;
-
     private void Awake()
     {
         LocalizationEvents.OnLanguageLoad += HandleOnChangeLanguage;
@@ -33,6 +32,6 @@ public class LocalizationController : MonoBehaviour
             await LocalizationSettings.SelectedLocaleAsync.Task;
         }
 
-        LocalizationEvents.OnLanguageChanged?.Invoke();
+        LocalizationEvents.OnLanguageChanged?.Invoke(code);
     }
 }

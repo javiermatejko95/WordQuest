@@ -16,9 +16,25 @@ public class LocalizationView : MonoBehaviour
         PopulateDropdown();
     }
 
-    private void HandleOnLanguageChanged()
+    private void HandleOnLanguageChanged(string code)
     {
-        Debug.Log("Se cambió el idioma");
+        Debug.Log("Se cambió el idioma a " + code);
+
+        int indexToSelect = 0;
+
+        for (int i = 0; i < languageDropdown.options.Count; i++)
+        {
+            string optionCode = languageDropdown.options[i].text;
+
+            if (optionCode == code)
+            {
+                indexToSelect = i;
+                break;
+            }
+        }
+
+        languageDropdown.value = indexToSelect;
+        languageDropdown.RefreshShownValue();
     }
 
     private void PopulateDropdown()
@@ -29,11 +45,7 @@ public class LocalizationView : MonoBehaviour
 
         foreach (var entry in localizationData.LocalizationValues)
         {
-            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData
-            {
-                text = entry.CodeID,
-                image = entry.flagIcon  // solo funciona si tu dropdown está configurado en Image/Text
-            };
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(entry.CodeID, entry.flagIcon);
 
             options.Add(option);
         }

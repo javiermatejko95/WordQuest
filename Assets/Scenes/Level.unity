@@ -1833,6 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 533150467}
   - component: {fileID: 533150468}
+  - component: {fileID: 533150469}
   m_Layer: 0
   m_Name: LocalizationController
   m_TagString: Untagged
@@ -1867,7 +1868,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43862099501d24a4eb8ffe41f935c083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prueba: {fileID: 0}
+--- !u!114 &533150469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533150466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e8617c6b152bc4d81ddd5a09e095fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizationData: {fileID: 11400000, guid: e7e60ccde8009554ba19744cb5a99f9e, type: 2}
 --- !u!1 &542378783
 GameObject:
   m_ObjectHideFlags: 0
@@ -3744,7 +3757,7 @@ MonoBehaviour:
   m_CaptionImage: {fileID: 543196444}
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 260044378}
-  m_ItemImage: {fileID: 0}
+  m_ItemImage: {fileID: 1737834407}
   m_Value: 0
   m_Options:
     m_Options:
@@ -5723,7 +5736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2a9dd38669ff3db49b9fc2e5b197f852, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

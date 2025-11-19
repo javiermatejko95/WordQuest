@@ -10,16 +10,16 @@ public class LocalizationController : MonoBehaviour
 {
     private void Awake()
     {
-        LocalizationEvents.OnLanguageLoad += HandleOnChangeLanguage;
+        LocalizationEvents.OnLanguageLoad += HandleOnLanguageLoad;
     }
 
-    private void HandleOnChangeLanguage(string code)
+    private void HandleOnLanguageLoad(string code)
     {
         //TODO: show percentage of loading and loading popup/screen
         ChangeLanguage(code).Forget();
     }
 
-    public async UniTask ChangeLanguage(string code)
+    private async UniTask ChangeLanguage(string code)
     {
         await LocalizationSettings.InitializationOperation.Task;
 

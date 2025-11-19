@@ -11,12 +11,12 @@ public class LocalizationView : MonoBehaviour
 
     private void Awake()
     {
-        LocalizationEvents.OnLanguageChanged += HandleOnLanguageChanged;
+        LocalizationEvents.OnLanguageSaved += HandleOnLanguageSaved;
 
         PopulateDropdown();
     }
 
-    private void HandleOnLanguageChanged(string code)
+    private void HandleOnLanguageSaved(string code)
     {
         Debug.Log("Se cambió el idioma a " + code);
 
@@ -35,6 +35,8 @@ public class LocalizationView : MonoBehaviour
 
         languageDropdown.value = indexToSelect;
         languageDropdown.RefreshShownValue();
+
+        GameEvents.OnHideBoard?.Invoke();
     }
 
     private void PopulateDropdown()

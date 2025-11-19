@@ -14,4 +14,5 @@ public static class GameEvents
     public static Action<string> OnWordReveal;
 
     public static Action OnGameRestart;
+    public static Action OnHideBoard;
 }

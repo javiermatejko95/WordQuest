@@ -13,6 +13,7 @@ public class LocalizationSaveController : MonoBehaviour
     private void Awake()
     {
         LocalizationEvents.OnLanguageChanged += Save;
+        LocalizationEvents.OnGetLanguageCodeID += GetLanguageCodeID;
 
         Load();
     }
@@ -21,9 +22,10 @@ public class LocalizationSaveController : MonoBehaviour
     {
         Data.CurrentLanguage = languageCode;
         SaveService.Save(SAVE_KEY, Data);
+        LocalizationEvents.OnLanguageSaved?.Invoke(Data.CurrentLanguage);
     }
 
-    public void Load()
+    private void Load()
     {
         SaveService.Initialize(new JsonSaveProvider());
 
@@ -38,5 +40,10 @@ public class LocalizationSaveController : MonoBehaviour
         }
 
         LocalizationEvents.OnLanguageLoad?.Invoke(Data.CurrentLanguage);
+    }
+
+    private string GetLanguageCodeID()
+    {
+        return Data.CurrentLanguage;
     }
 }

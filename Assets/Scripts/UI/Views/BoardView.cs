@@ -23,6 +23,7 @@ public class BoardView : MonoBehaviour
         GameEvents.OnGameRestart += HandleOnGameRestart;
         GameEvents.OnWordReveal += HandleOnWordReveal;
         GameEvents.OnLoadGame += ShowLetterTiles;
+        GameEvents.OnHideBoard += HandleOnHideBoard;
 
         board = new LetterTileView[gameDataConfig.MaxRows, gameDataConfig.MaxColumns];
 
@@ -65,6 +66,7 @@ public class BoardView : MonoBehaviour
         {
             for(int j = 0; j < gameDataConfig.MaxColumns; j++)
             {
+                board[i, j ].Init(letterTileThemeConfig);
                 board[i, j].gameObject.SetActive(j < currentMaxColumns ? true : false);
             }
         }
@@ -115,6 +117,17 @@ public class BoardView : MonoBehaviour
         for(int i = 0; i < currentMaxColumns; i++)
         {
             board[currentRow - 1, i].SetLetter(word[i].ToString());
+        }
+    }
+
+    private void HandleOnHideBoard()
+    {
+        for (int i = 0; i < gameDataConfig.MaxRows; i++)
+        {
+            for (int j = 0; j < gameDataConfig.MaxColumns; j++)
+            {
+                board[i, j].gameObject.SetActive(false);
+            }
         }
     }
 }

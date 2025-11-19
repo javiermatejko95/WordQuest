@@ -26,9 +26,9 @@ public class WordDictionary
         Debug.Log($"?? Palabras cargadas: {Words.Count}");
     }
 
-    public void LoadWithNumber(string number)
+    public void LoadWithNumber(string number, string codeID)
     {
-        TextAsset file = Resources.Load<TextAsset>($"{number}_es_clean");
+        TextAsset file = Resources.Load<TextAsset>($"{codeID}/{number}_{codeID}_clean");
         Words = new HashSet<string>(file.text
             .Split('\n')
             .Select(word => word.Trim()));

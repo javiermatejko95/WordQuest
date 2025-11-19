@@ -80,6 +80,10 @@ public class WordsGameController : MonoBehaviour
 
     private void HandleOnGameRestart()
     {
+        if(!dailyWord.HasLoadedWords())
+        {
+            return;
+        }
         model.GameFinished = false;
         model.CurrentAttempt = 0;
 
@@ -101,7 +105,7 @@ public class WordsGameController : MonoBehaviour
     {
         currentMaxColumns = int.Parse(number);
 
-        wordDictionary.LoadWithNumber(number);
+        wordDictionary.LoadWithNumber(number, LocalizationEvents.OnGetLanguageCodeID?.Invoke());
 
         GameEvents.OnGameRestart?.Invoke();
     }

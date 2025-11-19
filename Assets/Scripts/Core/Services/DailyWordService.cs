@@ -22,4 +22,9 @@ public class DailyWordService
         int index = UnityEngine.Random.Range(0, dictionary.Words.Count);
         return dictionary.Words.ElementAt(index);
     }
+
+    public bool HasLoadedWords()
+    {
+        return dictionary.Words != null;
+    }
 }

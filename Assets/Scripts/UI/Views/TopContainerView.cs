@@ -11,6 +11,8 @@ public class TopContainerView : MonoBehaviour
     [SerializeField] private Button load6WordsButton;
     [SerializeField] private Button load7WordsButton;
 
+    [SerializeField] private Button statsButton;
+
     private void Awake()
     {
         load5WordsButton.onClick.AddListener(() => HandleOnLoadGame("5"));

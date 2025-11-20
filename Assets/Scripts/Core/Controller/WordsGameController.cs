@@ -75,6 +75,7 @@ public class WordsGameController : MonoBehaviour
         {
             model.GameFinished = true;
             GameEvents.OnGameFinished?.Invoke(won);
+            StatsEvents.OnEndGame?.Invoke(won);
         }
     }
 

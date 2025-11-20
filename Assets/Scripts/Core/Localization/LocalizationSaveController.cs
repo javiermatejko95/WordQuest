@@ -27,8 +27,6 @@ public class LocalizationSaveController : MonoBehaviour
 
     private void Load()
     {
-        SaveService.Initialize(new JsonSaveProvider());
-
         if (SaveService.Exists(SAVE_KEY))
         {
             Data = SaveService.Load<LocalizationDataModel>(SAVE_KEY);

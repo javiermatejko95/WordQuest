@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SaveService : MonoBehaviour
+public class SaveService : IInitializableService
 {
     private static ISaveProvider provider;
 
-    public static void Initialize(ISaveProvider saveProvider)
+    public void Initialize()
     {
-        provider = saveProvider;
+        provider = new JsonSaveProvider();
     }
 
     public static void Save<T>(string key, T data)

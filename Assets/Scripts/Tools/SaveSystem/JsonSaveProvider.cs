@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.IO;
 using UnityEngine;
 
@@ -14,18 +15,23 @@ public class JsonSaveProvider : ISaveProvider
 
     public void Save<T>(string key, T data)
     {
-        string json = JsonUtility.ToJson(data, true);
+        string json = JsonConvert.SerializeObject(
+        data,
+        Formatting.Indented);
+
         File.WriteAllText(Path.Combine(savePath, key + ".json"), json);
     }
 
     public T Load<T>(string key)
     {
         string filePath = Path.Combine(savePath, key + ".json");
+
         if (!File.Exists(filePath))
             return default;
 
         string json = File.ReadAllText(filePath);
-        return JsonUtility.FromJson<T>(json);
+
+        return JsonConvert.DeserializeObject<T>(json);
     }
 
     public bool Exists(string key)

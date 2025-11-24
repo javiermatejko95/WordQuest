@@ -18,12 +18,16 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 159996407808
-    m_Localized: Testando Estatico
+  - m_Id: 3276277243408384
+    m_Localized: "Compartilhe suas estat\xEDsticas"
     m_Metadata:
       m_Items: []
-  - m_Id: 7891264696320
-    m_Localized: Testando Dinamico
+  - m_Id: 3276148696379392
+    m_Localized: "Estat\xEDsticas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278780110434304
+    m_Localized: 
     m_Metadata:
       m_Items: []
   references:

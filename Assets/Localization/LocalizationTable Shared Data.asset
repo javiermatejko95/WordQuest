@@ -15,12 +15,16 @@ MonoBehaviour:
   m_TableCollectionName: LocalizationTable
   m_TableCollectionNameGuidString: ab7c6f94ab2f6eb4fa47240b360e9181
   m_Entries:
-  - m_Id: 159996407808
-    m_Key: testStatic
+  - m_Id: 3276148696379392
+    m_Key: LOC_STATS
     m_Metadata:
       m_Items: []
-  - m_Id: 7891264696320
-    m_Key: testDynamic
+  - m_Id: 3276277243408384
+    m_Key: LOC_SHARE_STATS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278780110434304
+    m_Key: LOC_ATTEMPTS_DISTRIBUTION
     m_Metadata:
       m_Items: []
   m_Metadata:

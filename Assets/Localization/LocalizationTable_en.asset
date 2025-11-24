@@ -18,12 +18,12 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 159996407808
-    m_Localized: Test Static
+  - m_Id: 3276277243408384
+    m_Localized: Share your stats
     m_Metadata:
       m_Items: []
-  - m_Id: 7891264696320
-    m_Localized: Test Dynamic
+  - m_Id: 3276148696379392
+    m_Localized: Statistics
     m_Metadata:
       m_Items: []
   references:

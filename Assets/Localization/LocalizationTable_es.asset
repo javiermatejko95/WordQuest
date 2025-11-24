@@ -18,12 +18,16 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 159996407808
-    m_Localized: Probando Estatico
+  - m_Id: 3276277243408384
+    m_Localized: "Comparte tus estad\xEDsticas"
     m_Metadata:
       m_Items: []
-  - m_Id: 7891264696320
-    m_Localized: Probando Dinamico
+  - m_Id: 3276148696379392
+    m_Localized: "Estad\xEDsticas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278780110434304
+    m_Localized: "Mejor distribuci\xF3n de intentos"
     m_Metadata:
       m_Items: []
   references:

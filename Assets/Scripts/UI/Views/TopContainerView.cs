@@ -18,6 +18,8 @@ public class TopContainerView : MonoBehaviour
         load5WordsButton.onClick.AddListener(() => HandleOnLoadGame("5"));
         load6WordsButton.onClick.AddListener(() => HandleOnLoadGame("6"));
         load7WordsButton.onClick.AddListener(() => HandleOnLoadGame("7"));
+
+        statsButton.onClick.AddListener(() => StatsEvents.OnTogglePopup?.Invoke());
     }
 
     private void HandleOnLoadGame(string number)
@@ -25,4 +27,6 @@ public class TopContainerView : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         GameEvents.OnLoadGame?.Invoke(number);
     }
+
+
 }

@@ -27,6 +27,18 @@ MonoBehaviour:
     m_Key: LOC_ATTEMPTS_DISTRIBUTION
     m_Metadata:
       m_Items: []
+  - m_Id: 12301753202995200
+    m_Key: LOC_RESET_STATS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302720724070400
+    m_Key: LOC_GUESS_WORD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12335206644543488
+    m_Key: LOC_WORD_DOES_NOT_EXIST
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

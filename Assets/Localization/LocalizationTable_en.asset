@@ -26,6 +26,22 @@ MonoBehaviour:
     m_Localized: Statistics
     m_Metadata:
       m_Items: []
+  - m_Id: 12301753202995200
+    m_Localized: Reset stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278780110434304
+    m_Localized: Better distribution of attempts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302720724070400
+    m_Localized: Guess the word!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12335206644543488
+    m_Localized: Word does not exist!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

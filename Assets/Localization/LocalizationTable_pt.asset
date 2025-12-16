@@ -27,7 +27,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3278780110434304
-    m_Localized: 
+    m_Localized: "Melhor distribui\xE7\xE3o de tentativas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12301753202995200
+    m_Localized: "Redefinir estat\xEDsticas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302720724070400
+    m_Localized: Adivinhe a palavra!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12335206644543488
+    m_Localized: "A palavra n\xE3o existe!"
     m_Metadata:
       m_Items: []
   references:

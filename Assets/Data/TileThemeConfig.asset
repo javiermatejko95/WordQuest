@@ -17,6 +17,6 @@ MonoBehaviour:
   absentBackgroundColor: {r: 0.47058824, g: 0.4862745, b: 0.49411765, a: 1}
   presentBackgroundColor: {r: 0.7882353, g: 0.7058824, b: 0.34509805, a: 1}
   correctBackgroundColor: {r: 0.41568628, g: 0.6666667, b: 0.39215687, a: 1}
-  defaultKeyboardColor: {r: 0.22745098, g: 0.22745098, b: 0.23529412, a: 1}
+  defaultKeyboardColor: {r: 0.5058824, g: 0.5137255, b: 0.5176471, a: 1}
   defaultLetterColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLetterColor: {r: 0.84313726, g: 0.85490197, b: 0.8627451, a: 1}

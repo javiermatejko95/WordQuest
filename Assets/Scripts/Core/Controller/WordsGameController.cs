@@ -12,6 +12,9 @@ public class WordsGameController : MonoBehaviour
 
     private int currentMaxColumns = 0;
 
+    private const string WORD_DOES_NOT_EXIST = "LOC_WORD_DOES_NOT_EXIST";
+    private const string GUESS_WORD = "LOC_GUESS_WORD";
+
     private void Awake()
     {
         model = new();
@@ -61,6 +64,7 @@ public class WordsGameController : MonoBehaviour
 
         if (!validator.IsValidWord(model.CurrentInput))
         {
+            PopupEvents.OnShowPopup?.Invoke(WORD_DOES_NOT_EXIST);
             return;
         }
 
@@ -90,6 +94,8 @@ public class WordsGameController : MonoBehaviour
 
         model.OriginalWord = dailyWord.GetNewRandomWord();
         model.WordToGuess = StringUtils.RemoveDiacritics(model.OriginalWord);
+
+        PopupEvents.OnShowPopup?.Invoke(GUESS_WORD);
 
         Debug.Log("La palabra del dia es: " + model.OriginalWord);
     }

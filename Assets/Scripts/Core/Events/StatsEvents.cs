@@ -7,5 +7,6 @@ public static class StatsEvents
     public static Func<StatsModel> OnGetStats;
     public static Action OnTogglePopup;
     public static Action OnResetStats;
+    public static Action OnResettedStats;
     public static Func<Dictionary<int, float>> OnGetAttemptsPercentages;
 }

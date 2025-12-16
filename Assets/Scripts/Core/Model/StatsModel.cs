@@ -10,6 +10,7 @@ public class StatsModel
     public int MaxStreak;
     public int VictoryPercentage;
     public int CurrentAttempt;
+    public int BestAttempt;
 
     public Dictionary<int, int> WinsByAttempt = new Dictionary<int, int>();
 

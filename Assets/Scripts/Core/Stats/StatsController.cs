@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 
 public class StatsController : MonoBehaviour
@@ -14,6 +16,7 @@ public class StatsController : MonoBehaviour
         StatsEvents.OnEndGame += HandleOnEndGame;
         StatsEvents.OnGetStats += HandleOnGetStats;
         StatsEvents.OnGetAttemptsPercentages += HandleOnGetAttemptPercentages;
+        StatsEvents.OnResetStats += HandleOnResetStats;
 
         HandleOnLoadStats();
     }
@@ -22,6 +25,8 @@ public class StatsController : MonoBehaviour
     {
         StatsEvents.OnEndGame -= HandleOnEndGame;
         StatsEvents.OnGetStats -= HandleOnGetStats;
+        StatsEvents.OnGetAttemptsPercentages -= HandleOnGetAttemptPercentages;
+        StatsEvents.OnResetStats -= HandleOnResetStats;
     }
 
     private void HandleOnEndGame(bool hasWon, WordModel wordModel)
@@ -31,6 +36,12 @@ public class StatsController : MonoBehaviour
         statsModel.CurrentStreak += hasWon ? 1 : -statsModel.CurrentStreak;
         statsModel.MaxStreak = statsModel.CurrentStreak > statsModel.MaxStreak ? statsModel.CurrentStreak : statsModel.MaxStreak;
         statsModel.WinsByAttempt[wordModel.CurrentAttempt] += 1;
+        statsModel.BestAttempt = statsModel.WinsByAttempt
+            .Where(key => key.Value > 0)
+            .DefaultIfEmpty(new KeyValuePair<int, int>(0, 0))
+            .OrderByDescending(kv => kv.Value)
+            .First()
+            .Key;
 
         float victoryPercentage = ((float)statsModel.TotalGamesWon / statsModel.TotalGamesPlayed) * 100f;
         statsModel.VictoryPercentage = Mathf.FloorToInt(victoryPercentage);
@@ -54,6 +65,16 @@ public class StatsController : MonoBehaviour
     private StatsModel HandleOnGetStats()
     {
         return statsModel; 
+    }
+
+    private void HandleOnResetStats()
+    {
+        SaveService.Delete(STATS_KEY);
+
+        statsModel = new StatsModel();
+        SaveService.Save<StatsModel>(STATS_KEY, statsModel);
+
+        StatsEvents.OnResettedStats?.Invoke();
     }
 
     private Dictionary<int, float> HandleOnGetAttemptPercentages()

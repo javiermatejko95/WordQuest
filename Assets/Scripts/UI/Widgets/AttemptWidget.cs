@@ -9,6 +9,11 @@ public class AttemptWidget : MonoBehaviour
     [SerializeField] private TextMeshProUGUI numberAttemptTxt;
     [SerializeField] private ProgressBar progressBar;
 
+    public void Setup(int position)
+    {
+        positionTxt.text = $"#{position}";
+    }
+
     public void SetData(float percentage, string numberAttempt)
     {
         progressBar.SetValue(percentage);

@@ -65,6 +65,7 @@ public class WordsGameController : MonoBehaviour
         if (!validator.IsValidWord(model.CurrentInput))
         {
             PopupEvents.OnShowPopup?.Invoke(WORD_DOES_NOT_EXIST);
+            GameEvents.OnWordDoesNotExist?.Invoke();
             return;
         }
 

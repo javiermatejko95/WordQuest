@@ -10,6 +10,7 @@ public static class GameEvents
     public static Action OnSubmitWord;
     public static Action<int, LetterResult[]> OnWordEvaluated;
     public static Action<bool> OnGameFinished;
+    public static Action OnWordDoesNotExist;
 
     public static Action<string> OnWordReveal;
 

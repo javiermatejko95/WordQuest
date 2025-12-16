@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEditor.Localization.LocalizationTableCollection;
 
 public class BoardView : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class BoardView : MonoBehaviour
         GameEvents.OnWordReveal += HandleOnWordReveal;
         GameEvents.OnLoadGame += ShowLetterTiles;
         GameEvents.OnHideBoard += HandleOnHideBoard;
+        GameEvents.OnWordDoesNotExist += HandleOnWordDoesNotExist;
 
         board = new LetterTileView[gameDataConfig.MaxRows, gameDataConfig.MaxColumns];
 
@@ -38,6 +40,7 @@ public class BoardView : MonoBehaviour
         GameEvents.OnGameRestart -= HandleOnGameRestart;
         GameEvents.OnWordReveal -= HandleOnWordReveal;
         GameEvents.OnLoadGame -= ShowLetterTiles;
+        GameEvents.OnWordDoesNotExist -= HandleOnWordDoesNotExist;
     }
 
     private void SpawnLetterTiles()
@@ -88,14 +91,26 @@ public class BoardView : MonoBehaviour
 
     private void LockRow(int row, LetterResult[] letters)
     {
+        float delay = 0f;
+
         for (int i = 0; i < letters.Length; i++)
         {
             board[row, i].SetLetter(letters[i].Letter.ToString());
-            board[row, i].SetState(letters[i].State, letterTileThemeConfig);
+            board[row, i].PlayRevealAnimation(delay, letters[i].State, letterTileThemeConfig);
+
+            delay += 0.1f;
         }
 
         currentRow++;
         currentCol = 0;
+    }
+
+    private void HandleOnWordDoesNotExist()
+    {
+        for (int i = 0; i < gameDataConfig.MaxRows; i++)
+        {
+            board[currentRow, i].PlayInvalidWordAnimation();
+        }
     }
 
     private void HandleOnGameRestart()
@@ -114,9 +129,13 @@ public class BoardView : MonoBehaviour
 
     private void HandleOnWordReveal(string word)
     {
-        for(int i = 0; i < currentMaxColumns; i++)
+        float delay = 0f;
+
+        for (int i = 0; i < currentMaxColumns; i++)
         {
             board[currentRow - 1, i].SetLetter(word[i].ToString());
+            board[currentRow - 1, i].PlayRevealAnimation(delay, LetterState.Correct, letterTileThemeConfig);
+            delay += 0.1f;
         }
     }
 

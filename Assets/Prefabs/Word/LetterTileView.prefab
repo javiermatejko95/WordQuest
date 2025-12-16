@@ -298,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   label: {fileID: 58466049102757661}
   background: {fileID: 2553994798315060674}
+  root: {fileID: 2739099078255216751}
 --- !u!1 &6056048977649583826
 GameObject:
   m_ObjectHideFlags: 0

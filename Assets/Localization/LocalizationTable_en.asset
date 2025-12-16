@@ -42,6 +42,30 @@ MonoBehaviour:
     m_Localized: Word does not exist!
     m_Metadata:
       m_Items: []
+  - m_Id: 12355007307804672
+    m_Localized: Games played
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355040476360704
+    m_Localized: Games won
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355069391892480
+    m_Localized: Victories(%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355146210570240
+    m_Localized: Best try
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355176132734976
+    m_Localized: Current streak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355301588561920
+    m_Localized: Best streak
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -39,6 +39,30 @@ MonoBehaviour:
     m_Key: LOC_WORD_DOES_NOT_EXIST
     m_Metadata:
       m_Items: []
+  - m_Id: 12355007307804672
+    m_Key: LOC_GAMES_PLAYED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355040476360704
+    m_Key: LOC_GAMES_WON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355069391892480
+    m_Key: LOC_VICTORY_PERCENTAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355146210570240
+    m_Key: LOC_BEST_TRY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355176132734976
+    m_Key: LOC_CURRENT_STREAK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355301588561920
+    m_Key: LOC_BEST_STREAK
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -42,6 +42,30 @@ MonoBehaviour:
     m_Localized: "\xA1La palabra no existe!"
     m_Metadata:
       m_Items: []
+  - m_Id: 12355007307804672
+    m_Localized: Partidas jugadas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355040476360704
+    m_Localized: Partidas ganadas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355069391892480
+    m_Localized: Victorias (%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355146210570240
+    m_Localized: Mejor intento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355176132734976
+    m_Localized: Racha actual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355301588561920
+    m_Localized: Mejor racha
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

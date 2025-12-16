@@ -42,6 +42,30 @@ MonoBehaviour:
     m_Localized: "A palavra n\xE3o existe!"
     m_Metadata:
       m_Items: []
+  - m_Id: 12355007307804672
+    m_Localized: Jogos disputados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355040476360704
+    m_Localized: Jogos vencidos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355069391892480
+    m_Localized: "Vit\xF3rias (%)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355146210570240
+    m_Localized: Melhor tentativa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355176132734976
+    m_Localized: "Sequ\xEAncia atual"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355301588561920
+    m_Localized: "Melhor sequ\xEAncia"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

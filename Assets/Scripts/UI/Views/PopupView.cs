@@ -9,21 +9,14 @@ public class PopupView : MonoBehaviour
 {
     [SerializeField] private GameObject container;
     [SerializeField] private TextMeshProUGUI descriptionTxt;
-    [SerializeField] private float autoHideTime = 2f;
-
-    private const string LOCALIZATION_TABLE = "LocalizationTable";
+    [SerializeField] private float autoHideTime = 2f;    
 
     private CancellationTokenSource cts;
-    private StringTable stringTable;
 
-
-    private async void Awake()
+    private void Awake()
     {
         PopupEvents.OnShowPopup += HandleOnShowPopup;
         PopupEvents.OnClosePopup += HandleOnClosePopup;
-
-        stringTable = await LocalizationSettings.StringDatabase
-        .GetTableAsync(LOCALIZATION_TABLE);
     }
 
     private void OnDestroy()
@@ -37,7 +30,7 @@ public class PopupView : MonoBehaviour
     private void HandleOnShowPopup(string key)
     {
         container.gameObject.SetActive(true);
-        descriptionTxt.text = stringTable.GetEntry(key).GetLocalizedString();
+        descriptionTxt.text = LocalizationEvents.OnGetLanguageKey?.Invoke(key);
 
         CancelToken();
 

@@ -11,6 +11,13 @@ public class StatsView : MonoBehaviour
     [SerializeField] private Button resetStatsBtn;
     [SerializeField] private AttemptWidget[] attemptWidgets;
 
+    private const string LOC_GAMES_PLAYED = "LOC_GAMES_PLAYED";
+    private const string LOC_GAMES_WON = "LOC_GAMES_WON";
+    private const string LOC_VICTORY_PERCENTAGE = "LOC_VICTORY_PERCENTAGE";
+    private const string LOC_BEST_TRY = "LOC_BEST_TRY";
+    private const string LOC_CURRENT_STREAK = "LOC_CURRENT_STREAK";
+    private const string LOC_BEST_STREAK = "LOC_BEST_STREAK";
+
     private bool statsPopupToggle;
 
     private void Awake()
@@ -60,12 +67,12 @@ public class StatsView : MonoBehaviour
 
     private void UpdateStatWidgetsData(StatsModel data)
     {
-        statWidgets[0].SetData("Juegos Jugados", data.TotalGamesPlayed.ToString());
-        statWidgets[1].SetData("Juegos ganados", data.TotalGamesWon.ToString());
-        statWidgets[2].SetData("Victorias (%)", data.VictoryPercentage.ToString("0"));
-        statWidgets[3].SetData("Mejor intento", data.BestAttempt.ToString());
-        statWidgets[4].SetData("Racha actual", data.CurrentStreak.ToString());
-        statWidgets[5].SetData("Mejor racha", data.MaxStreak.ToString());
+        statWidgets[0].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_GAMES_PLAYED), data.TotalGamesPlayed.ToString());
+        statWidgets[1].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_GAMES_WON), data.TotalGamesWon.ToString());
+        statWidgets[2].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_VICTORY_PERCENTAGE), data.VictoryPercentage.ToString("0"));
+        statWidgets[3].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_BEST_TRY), data.BestAttempt.ToString());
+        statWidgets[4].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_CURRENT_STREAK), data.CurrentStreak.ToString());
+        statWidgets[5].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_BEST_STREAK), data.MaxStreak.ToString());
     }
 
     private void UpdateAttemptWidgetsData(StatsModel data)

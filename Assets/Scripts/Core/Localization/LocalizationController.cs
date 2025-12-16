@@ -1,16 +1,22 @@
-using UnityEngine.Localization.Settings;
-using System.Threading.Tasks;
-using UnityEngine;
-using TMPro;
 using Cysharp.Threading.Tasks;
-using UnityEngine.Localization;
-using System;
+using UnityEngine;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 public class LocalizationController : MonoBehaviour
 {
-    private void Awake()
+    private const string LOCALIZATION_TABLE = "LocalizationTable";
+
+    private async void Awake()
     {
         LocalizationEvents.OnLanguageLoad += HandleOnLanguageLoad;
+        LocalizationEvents.OnGetLanguageKey += HandleOnGetLanguageKey;
+    }
+
+    private void OnDestroy()
+    {
+        LocalizationEvents.OnLanguageLoad -= HandleOnLanguageLoad;
+        LocalizationEvents.OnGetLanguageKey -= HandleOnGetLanguageKey;
     }
 
     private void HandleOnLanguageLoad(string code)
@@ -33,5 +39,10 @@ public class LocalizationController : MonoBehaviour
         }
 
         LocalizationEvents.OnLanguageChanged?.Invoke(code);
+    }
+
+    private string HandleOnGetLanguageKey(string key)
+    {
+        return LocalizationSettings.StringDatabase.GetLocalizedString(LOCALIZATION_TABLE, key);
     }
 }

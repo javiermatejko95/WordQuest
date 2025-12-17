@@ -63,6 +63,22 @@ MonoBehaviour:
     m_Key: LOC_BEST_STREAK
     m_Metadata:
       m_Items: []
+  - m_Id: 12648223546503168
+    m_Key: LOC_WON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12648242550894592
+    m_Key: LOC_LOST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12649246931513344
+    m_Key: LOC_WORD_WAS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12652083258290176
+    m_Key: LOC_RESTART
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

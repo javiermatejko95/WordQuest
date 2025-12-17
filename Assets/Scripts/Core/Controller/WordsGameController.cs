@@ -29,6 +29,7 @@ public class WordsGameController : MonoBehaviour
         GameEvents.OnGameRestart += HandleOnGameRestart;
         GameEvents.OnGameFinished += HandleOnGameFinished;
         GameEvents.OnLoadGame += HandleOnLoadWithNumber;
+        GameEvents.OnGetCurrentWord += HandleOnGetCurrentWord;
     }
 
     private void OnDestroy()
@@ -39,6 +40,7 @@ public class WordsGameController : MonoBehaviour
         GameEvents.OnGameRestart -= HandleOnGameRestart;
         GameEvents.OnGameFinished -= HandleOnGameFinished;
         GameEvents.OnLoadGame -= HandleOnLoadWithNumber;
+        GameEvents.OnGetCurrentWord -= HandleOnGetCurrentWord;
     }
 
     private void HandleOnLetterEnter(string letter)
@@ -116,5 +118,10 @@ public class WordsGameController : MonoBehaviour
         wordDictionary.LoadWithNumber(number, LocalizationEvents.OnGetLanguageCodeID?.Invoke());
 
         GameEvents.OnGameRestart?.Invoke();
+    }
+
+    private string HandleOnGetCurrentWord()
+    {
+        return model.OriginalWord;
     }
 }

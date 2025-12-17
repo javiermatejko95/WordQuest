@@ -16,4 +16,6 @@ public static class GameEvents
 
     public static Action OnGameRestart;
     public static Action OnHideBoard;
+
+    public static Func<string> OnGetCurrentWord;
 }

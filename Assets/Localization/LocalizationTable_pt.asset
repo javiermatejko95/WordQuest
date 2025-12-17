@@ -66,6 +66,22 @@ MonoBehaviour:
     m_Localized: "Melhor sequ\xEAncia"
     m_Metadata:
       m_Items: []
+  - m_Id: 12648223546503168
+    m_Localized: Ganhou!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12648242550894592
+    m_Localized: Perdeu!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12649246931513344
+    m_Localized: 'A palavra era: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12652083258290176
+    m_Localized: Reiniciar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

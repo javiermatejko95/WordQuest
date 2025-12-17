@@ -1,4 +1,4 @@
-#Word Quest 🧩
+# Word Quest 🧩
 
 Word Quest is a Wordle-style game developed as a personal project, focused on a flexible architecture, clear visual feedback, and full multi-language support. The goal of this project is to build a solid and scalable foundation for word games, allowing systems to be easily reused and extended.
 

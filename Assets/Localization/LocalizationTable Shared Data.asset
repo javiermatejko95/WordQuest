@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LocalizationTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: LocalizationTable
+  m_TableCollectionNameGuidString: ab7c6f94ab2f6eb4fa47240b360e9181
+  m_Entries:
+  - m_Id: 3276148696379392
+    m_Key: LOC_STATS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3276277243408384
+    m_Key: LOC_SHARE_STATS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278780110434304
+    m_Key: LOC_ATTEMPTS_DISTRIBUTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12301753202995200
+    m_Key: LOC_RESET_STATS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302720724070400
+    m_Key: LOC_GUESS_WORD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12335206644543488
+    m_Key: LOC_WORD_DOES_NOT_EXIST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355007307804672
+    m_Key: LOC_GAMES_PLAYED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355040476360704
+    m_Key: LOC_GAMES_WON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355069391892480
+    m_Key: LOC_VICTORY_PERCENTAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355146210570240
+    m_Key: LOC_BEST_TRY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355176132734976
+    m_Key: LOC_CURRENT_STREAK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355301588561920
+    m_Key: LOC_BEST_STREAK
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7643367519463669788
+  references:
+    version: 2
+    RefIds:
+    - rid: 7643367519463669788
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1762972169997

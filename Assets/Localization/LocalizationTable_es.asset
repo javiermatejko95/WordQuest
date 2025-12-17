@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LocalizationTable_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: ab7c6f94ab2f6eb4fa47240b360e9181, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 3276277243408384
+    m_Localized: "Comparte tus estad\xEDsticas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3276148696379392
+    m_Localized: "Estad\xEDsticas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278780110434304
+    m_Localized: "Mejor distribuci\xF3n de intentos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12301753202995200
+    m_Localized: "Reiniciar estad\xEDsticas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12302720724070400
+    m_Localized: Adivine la palabra!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12335206644543488
+    m_Localized: "\xA1La palabra no existe!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355007307804672
+    m_Localized: Partidas jugadas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355040476360704
+    m_Localized: Partidas ganadas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355069391892480
+    m_Localized: Victorias (%)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355146210570240
+    m_Localized: Mejor intento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355176132734976
+    m_Localized: Racha actual
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12355301588561920
+    m_Localized: Mejor racha
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

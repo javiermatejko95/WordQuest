@@ -1,43 +1,68 @@
+using System.Collections.Generic;
+
 public class WordEvaluationService
 {
     public LetterResult[] Evaluate(string guess, string target, string target2)
     {
         int length = target.Length;
-        LetterResult[] result = new LetterResult[target.Length];
-        bool[] used = new bool[length];
+        LetterResult[] result = new LetterResult[length];
+
+        Dictionary<char, int> letterCount = new Dictionary<char, int>();        
+
+        AddLetters(target);
 
         for (int i = 0; i < length; i++)
         {
             if (guess[i] == target[i] || guess[i] == target2[i])
             {
-                result[i] = new LetterResult { Letter = guess[i], State = LetterState.Correct };
-                used[i] = true;
+                result[i] = new LetterResult
+                {
+                    Letter = guess[i],
+                    State = LetterState.Correct
+                };
+
+                letterCount[guess[i]]--;
             }
         }
 
         for (int i = 0; i < length; i++)
         {
-            if (result[i].State == LetterState.Correct) continue;
+            if (result[i].State == LetterState.Correct)
+                continue;
 
-            bool found = false;
-            for (int j = 0; j < length; j++)
+            char letter = guess[i];
+
+            if (letterCount.TryGetValue(letter, out int count) && count > 0)
             {
-                if (!used[j] && guess[i] == target[j] || guess[i] == target2[j])
+                result[i] = new LetterResult
                 {
-                    found = true;
-                    used[j] = true;
-                    break;
-                }
-            }
+                    Letter = letter,
+                    State = LetterState.Present
+                };
 
-            result[i] = new LetterResult
+                letterCount[letter]--;
+            }
+            else
             {
-                Letter = guess[i],
-                State = found ? LetterState.Present : LetterState.Absent
-            };
+                result[i] = new LetterResult
+                {
+                    Letter = letter,
+                    State = LetterState.Absent
+                };
+            }
         }
 
         return result;
+
+        void AddLetters(string word)
+        {
+            foreach (char c in word)
+            {
+                if (!letterCount.ContainsKey(c))
+                    letterCount[c] = 0;
+                letterCount[c]++;
+            }
+        }
     }
 }
 

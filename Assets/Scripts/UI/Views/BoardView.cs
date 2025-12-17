@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using static UnityEditor.Localization.LocalizationTableCollection;
 
 public class BoardView : MonoBehaviour
 {

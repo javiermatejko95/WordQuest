@@ -30,7 +30,11 @@ public class PopupView : MonoBehaviour
     private void HandleOnShowPopup(string key)
     {
         container.gameObject.SetActive(true);
-        descriptionTxt.text = LocalizationEvents.OnGetLanguageKey?.Invoke(key);
+
+        LocalizationEvents.OnRequestLocalizedText?.Invoke(key, text =>
+        {
+            descriptionTxt.text = text;
+        });
 
         CancelToken();
 

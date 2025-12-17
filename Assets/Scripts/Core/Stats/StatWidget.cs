@@ -8,7 +8,10 @@ public class StatWidget : MonoBehaviour
 
     public void SetData(string title, string number)
     {
-        titleText.text = title;
+        LocalizationEvents.OnRequestLocalizedText?.Invoke(title, text =>
+        {
+            titleText.text = text;
+        });
         numberText.text = number;
     }
 }

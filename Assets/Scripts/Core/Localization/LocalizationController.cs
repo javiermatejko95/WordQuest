@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
@@ -7,27 +8,27 @@ public class LocalizationController : MonoBehaviour
 {
     private const string LOCALIZATION_TABLE = "LocalizationTable";
 
-    private async void Awake()
+    private void Awake()
     {
         LocalizationEvents.OnLanguageLoad += HandleOnLanguageLoad;
-        LocalizationEvents.OnGetLanguageKey += HandleOnGetLanguageKey;
+        LocalizationEvents.OnRequestLocalizedText += HandleOnRequestLocalizedText;
     }
 
     private void OnDestroy()
     {
         LocalizationEvents.OnLanguageLoad -= HandleOnLanguageLoad;
-        LocalizationEvents.OnGetLanguageKey -= HandleOnGetLanguageKey;
+        LocalizationEvents.OnRequestLocalizedText -= HandleOnRequestLocalizedText;
     }
 
     private void HandleOnLanguageLoad(string code)
     {
         //TODO: show percentage of loading and loading popup/screen
-        ChangeLanguage(code).Forget();
+        StartCoroutine(ChangeLanguageCoroutine(code));
     }
 
-    private async UniTask ChangeLanguage(string code)
+    private IEnumerator ChangeLanguageCoroutine(string code)
     {
-        await LocalizationSettings.InitializationOperation.Task;
+        yield return LocalizationSettings.InitializationOperation;
 
         var locale = LocalizationSettings.AvailableLocales.Locales
             .Find(l => l.Identifier.Code == code);
@@ -35,14 +36,34 @@ public class LocalizationController : MonoBehaviour
         if (locale != null)
         {
             LocalizationSettings.SelectedLocale = locale;
-            await LocalizationSettings.SelectedLocaleAsync.Task;
+            yield return LocalizationSettings.SelectedLocaleAsync;
         }
 
         LocalizationEvents.OnLanguageChanged?.Invoke(code);
     }
 
-    private string HandleOnGetLanguageKey(string key)
+    private void HandleOnRequestLocalizedText(string key, System.Action<string> callback)
     {
-        return LocalizationSettings.StringDatabase.GetLocalizedString(LOCALIZATION_TABLE, key);
+        StartCoroutine(GetLocalizedTextCoroutine(key, callback));
+    }
+
+    private IEnumerator GetLocalizedTextCoroutine(string key, System.Action<string> callback)
+    {
+        yield return LocalizationSettings.InitializationOperation;
+
+        var tableOp = LocalizationSettings.StringDatabase.GetTableAsync(LOCALIZATION_TABLE);
+        yield return tableOp;
+
+        StringTable table = tableOp.Result;
+        if (table != null)
+        {
+            callback?.Invoke(
+                table.GetEntry(key)?.GetLocalizedString() ?? key
+            );
+        }
+        else
+        {
+            callback?.Invoke(key);
+        }
     }
 }

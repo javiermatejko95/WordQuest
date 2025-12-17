@@ -1,15 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 
 public class StatsController : MonoBehaviour
 {
     private StatsModel statsModel;
     private const string STATS_KEY = "stats";
-
-    private Dictionary<int, int> attempPercentage = new();
 
     private void Awake()
     {

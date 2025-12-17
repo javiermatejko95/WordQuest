@@ -10,5 +10,5 @@ public static class LocalizationEvents
     public static Action<string> OnLanguageSaved;
     public static Func<string> OnGetLanguageCodeID;
 
-    public static Func<string, string> OnGetLanguageKey;
+    public static Action<string, Action<string>> OnRequestLocalizedText;
 }

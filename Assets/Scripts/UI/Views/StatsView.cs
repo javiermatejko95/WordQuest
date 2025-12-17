@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -67,12 +66,12 @@ public class StatsView : MonoBehaviour
 
     private void UpdateStatWidgetsData(StatsModel data)
     {
-        statWidgets[0].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_GAMES_PLAYED), data.TotalGamesPlayed.ToString());
-        statWidgets[1].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_GAMES_WON), data.TotalGamesWon.ToString());
-        statWidgets[2].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_VICTORY_PERCENTAGE), data.VictoryPercentage.ToString("0"));
-        statWidgets[3].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_BEST_TRY), data.BestAttempt.ToString());
-        statWidgets[4].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_CURRENT_STREAK), data.CurrentStreak.ToString());
-        statWidgets[5].SetData(LocalizationEvents.OnGetLanguageKey?.Invoke(LOC_BEST_STREAK), data.MaxStreak.ToString());
+        statWidgets[0].SetData(LOC_GAMES_PLAYED, data.TotalGamesPlayed.ToString());
+        statWidgets[1].SetData(LOC_GAMES_WON, data.TotalGamesWon.ToString());
+        statWidgets[2].SetData(LOC_VICTORY_PERCENTAGE, data.VictoryPercentage.ToString("0"));
+        statWidgets[3].SetData(LOC_BEST_TRY, data.BestAttempt.ToString());
+        statWidgets[4].SetData(LOC_CURRENT_STREAK, data.CurrentStreak.ToString());
+        statWidgets[5].SetData(LOC_BEST_STREAK, data.MaxStreak.ToString());
     }
 
     private void UpdateAttemptWidgetsData(StatsModel data)
